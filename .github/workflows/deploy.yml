@@ -31,10 +31,33 @@ jobs:
           name: build-artifact
           path: dist/angular-test
           retention-days: 1
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16.x"
+          cache: "npm"
+
+      - name: Install Packages
+        run: npm ci
+
+      - name: Test
+        run: npm run test:ci
+        env:
+          CI: true
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    needs: test
 
     steps:
       - name: Get artifact(s)
