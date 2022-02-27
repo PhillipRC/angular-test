@@ -1,5 +1,7 @@
 # AngularTest
 
+[![CI/CD](https://github.com/PhillipRC/angular-test/workflows/Deployment/badge.svg)](https://philliprc.github.io/angular-test)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
 ## Development server
